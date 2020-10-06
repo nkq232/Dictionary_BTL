@@ -146,13 +146,13 @@ public class DictionaryManagement {
         }
     }
     public void dictionaryExportToFile() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("dictionariesUpdated.txt"));
-        ArrayList<Word> refToDict = dictionary.getList();
-        for (int i = 0; i < refToDict.size(); i++) {
-            ArrayList<String> refToWordExplain = refToDict.get(i).getWord_explain();
+        BufferedWriter writer = new BufferedWriter(new FileWriter("Export.txt"));
+        ArrayList<Word> ToDict = dictionary.getList();
+        for (int i = 0; i < ToDict.size(); i++) {
+            ArrayList<String> refToWordExplain = ToDict.get(i).getWord_explain();
             for (int j = 0; j < refToWordExplain.size(); j++) {
-                String word_target = refToDict.get(i).getWord_target();
-                String word_explain = refToDict.get(i).getWord_explain().get(j);
+                String word_target = ToDict.get(i).getWord_target();
+                String word_explain = ToDict.get(i).getWord_explain().get(j);
                 writer.write(word_target + "\t" + word_explain);
                 writer.newLine();
             }
