@@ -92,7 +92,7 @@ public class Dictionary {
 
         return true;
     }
-    /** Sua En, Vi cua mot tu trong list .*/
+    /** Sua English, Vietnamese cua mot tu trong list .*/
     public boolean EditWord(String EnBefore, String ViBefore, String EnAfter, String ViAfter) {
         if(removeWord(EnBefore, ViBefore) == true) {
             InsertWord(EnAfter, ViAfter);
