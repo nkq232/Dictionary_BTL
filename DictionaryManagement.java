@@ -45,7 +45,7 @@ public class DictionaryManagement {
     }
     public void insertFromFile() throws Exception{
         try {
-            File file = new File("C:\\Users\\Admin\\IdeaProjects\\BTL\\src\\Tu_dien\\dictionaries.txt");
+            File file = new File("dictionaries.txt");
             Scanner in = new Scanner(file);
             String c = "";
             while (in.hasNextLine()) {
