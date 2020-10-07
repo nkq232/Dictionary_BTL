@@ -46,7 +46,7 @@ public class Main {
             }
             if (Iscontinue && Ispress)
             {
-                System.out.println("Press enter to continue");
+                System.out.println("Please continue");
 
             }
             else if (Iscontinue)
@@ -57,4 +57,3 @@ public class Main {
         } while (Iscontinue);
     }
 }
-
