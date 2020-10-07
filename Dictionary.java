@@ -3,16 +3,25 @@ import java.util.*;
 
 public class Dictionary {
     private ArrayList<Word> list;
-    private ArrayList<String> list_target;
+    private static ArrayList<String> list_target;
+    public static void setList_target(ArrayList<String> list_target) {
+        Dictionary.list_target = list_target;
+
+    }
+
     //Constructors
     public ArrayList<String> getList_target() {
+
         return list_target;
     }
     public Dictionary() {
+        list_target = new ArrayList<String>();
+        list_target.add("Apple");
     }
 
     public Dictionary(ArrayList<Word> a) {
-
+        Word b = new Word("Apple", "Tao");
+        a.add(b);
         this.list = a;
     }
     public ArrayList<Word> getList() {
@@ -36,7 +45,7 @@ public class Dictionary {
     }
     /** Chen tu vao list.*/
     public void InsertWord(String En, String Vi) {
-        if(search(list_target, En) == -1) {
+        if( list_target == null || search(list_target, En) == -1) {
             Word newWord = new Word(En, Vi);
             list.add(newWord);
             list_target.add(En);
@@ -113,4 +122,3 @@ public class Dictionary {
     }
 
 }
-
