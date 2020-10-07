@@ -47,7 +47,7 @@ public class DictionaryManagement {
         try {
             File file = new File("dictionaries.txt");
             Scanner in = new Scanner(file);
-            String c = "";
+           
             while (in.hasNextLine()) {
             String new_line = in.nextLine();
             String[] chia_ra = new_line.split("\\t");
