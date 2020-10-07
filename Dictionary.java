@@ -1,12 +1,11 @@
 package Tu_dien;
 import java.util.*;
-import java.io.*;
+
 public class Dictionary {
     private ArrayList<Word> list;
     private ArrayList<String> list_target;
     //Constructors
     public ArrayList<String> getList_target() {
-
         return list_target;
     }
     public Dictionary() {
@@ -26,27 +25,31 @@ public class Dictionary {
 
     /**Tim kiem 1 tu trong array da luu tra ve vi tri .*/
     public int search(ArrayList<String> b, String c) {
-        for(int i = 0; i < b.size(); i++) {
-            if(b.get(i) == c) return i;
+        if (b == null) {
+            return -1;
+        } else {
+            for (String ps : b) {
+                if (ps.equals(c)) return b.indexOf(ps);
+            }
+            return -1;
         }
-        return -1;
     }
     /** Chen tu vao list.*/
     public void InsertWord(String En, String Vi) {
-    if(search(list_target, En) == -1) {
-        Word newWord = new Word(En, Vi);
-        list.add(newWord);
-        list_target.add(En);
-    }
-    else {
-        ArrayList<String> plus = list.get(search(list_target, En)).getWord_explain();
-        for(String s : plus) {
-            if(Vi.equals(s)) {
-                return;
-            }
-            plus.add(Vi);
+        if(search(list_target, En) == -1) {
+            Word newWord = new Word(En, Vi);
+            list.add(newWord);
+            list_target.add(En);
         }
-    }
+        else {
+            ArrayList<String> plus = list.get(search(list_target, En)).getWord_explain();
+            for(String s : plus) {
+                if(Vi.equals(s)) {
+                    return;
+                }
+                plus.add(Vi);
+            }
+        }
     }
     /**Tim kiem tu trong array tra ve array explain.*/
     public ArrayList<String> searchWord(String En) {
@@ -94,7 +97,7 @@ public class Dictionary {
     }
     /** Sua English, Vietnamese cua mot tu trong list .*/
     public boolean EditWord(String EnBefore, String ViBefore, String EnAfter, String ViAfter) {
-        if(removeWord(EnBefore, ViBefore) == true) {
+        if(removeWord(EnBefore, ViBefore)) {
             InsertWord(EnAfter, ViAfter);
             return true;
         }
@@ -110,3 +113,4 @@ public class Dictionary {
     }
 
 }
+
