@@ -17,26 +17,26 @@ public class Word {
 
     //Getter and Setter
     public String getWord_target() {
-        
+
         return word_target;
     }
     public ArrayList<String> getWord_explain() {
-        
+
         return word_explain;
     }
     public void setWord_target(String word_target) {
-        
+
         this.word_target = word_target;
     }
     public void setWord_explain(ArrayList<String> a) {
-        
+
         word_explain.addAll(a);
     }
     //Getter and Setter
 
     //More functions
     public void addWord_explain(String a) {
-        if(word_explain == null) word_explain = new ArrayList<String>();
+        if(word_explain == null) word_explain = new ArrayList<>();
         word_explain.add(a);
     }
     public void copy(Word a) {
