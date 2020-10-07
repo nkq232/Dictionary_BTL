@@ -1,6 +1,4 @@
 package Tu_dien;
-import java.io.*;
-import java.util.*;
 import java.util.Scanner;
 
 public class Main {
@@ -24,48 +22,28 @@ public class Main {
 
         boolean Ispress = true;
         int select = in.nextInt();
-        switch (select) {
-            case 1: {
-                dic_manage.insertFromFile();
-                break;
+            switch (select) {
+                case 1 -> dic_manage.insertFromFile();
+                case 2 -> dic_com.showAllWords();
+                case 3 -> dic_manage.insertFromCommandline();
+                case 4 -> dic_manage.dictionaryLookup();
+                case 5 -> dic_manage.deleteWord();
+                case 6 -> dic_com.DictionarySearcher();
+                case 7 -> {
+                    dic_manage.dictionaryExportToFile();
+                    System.out.println("Export completed");
+                     
+                }
+                case 8 -> {
+                    Iscontinue = false;
+                    System.out.println("Goodbye");
+                     
+                }
+                default -> {
+                    Ispress = false;
+                    System.out.println("Please input again !");
+                }
             }
-            case 2: {
-                dic_com.showAllWords();
-                break;
-            }
-            case 3: {
-                dic_manage.insertFromCommandline();
-                break;
-            }
-            case 4: {
-                dic_manage.dictionaryLookup();
-                break;
-            }
-            case 5: {
-                dic_manage.deleteWord();
-                break;
-            }
-
-            case 6: {
-                dic_com.DictionarySearcher();
-                break;
-            }
-
-            case 7: {
-                dic_manage.dictionaryExportToFile();
-                System.out.println("Export completed");
-                break;
-            }
-            case 8: {
-                Iscontinue = false;
-                System.out.println("Goodbye");
-                break;
-            }
-            default: {
-                Ispress = false;
-                System.out.println("Please input again !");
-            }
-        }
             if (Iscontinue && Ispress)
             {
                 System.out.println("Press enter to continue");
@@ -79,3 +57,4 @@ public class Main {
         } while (Iscontinue);
     }
 }
+
