@@ -1,3 +1,3 @@
-House/Ngôi nhà
-Cat/Con mèo
-Flower/Hoa
+House NgÃ´i nhÃ 
+Cat Con mÃ¨o
+Flower  Hoa
