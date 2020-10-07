@@ -1,30 +1,21 @@
 package Tu_dien;
 import java.util.*;
-import java.io.*;
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class DictionaryCommandline {
-    private Dictionary dictionary;
-    private DictionaryManagement dict_manage;
+    private final Dictionary dictionary;
+    private final DictionaryManagement dict_manage;
     private ArrayList<Word> list;
 
     // Constructor
-    public DictionaryCommandline(Dictionary dictionary) {
-        this.dictionary = dictionary;
-        dict_manage = new DictionaryManagement(dictionary);
-    }
     public DictionaryCommandline(Dictionary dictionary, DictionaryManagement dict_manage) {
         this.dictionary = dictionary;
         this.dict_manage = dict_manage;
     }
-    public DictionaryCommandline() {
-
-    }
     // End Constructor
     public void showAllWords() {
         if(list == null) {
-            list = new ArrayList<Word>(dictionary.getList());
+            list = new ArrayList<>(dictionary.getList());
         }
         boolean check_Empty = true;
         int thu_tu = 0;
@@ -57,22 +48,22 @@ public class DictionaryCommandline {
     }
     public void DictionarySearcher() {
         Scanner in = new Scanner(System.in);
-    System.out.println("Enter to find : ");
-    String find = in.nextLine();
-    ArrayList<String> result = new ArrayList<String>();
-    result = dictionary.Searcher(find);
-    if (result == null) {
-        System.out.println("We cant find anything like that");
-    }
-    else if (result.size() == 0) {
-        System.out.println("We cant find anything like that");
-    }
-    else {
-        System.out.println("We found" + result.size() + " results");
-        for(int i = 0; i < result.size(); i++) {
-            System.out.println(result.get(i));
+        System.out.println("Enter to find : ");
+        String find = in.nextLine();
+        ArrayList<String> result;
+        result = dictionary.Searcher(find);
+        if (result == null) {
+            System.out.println("We cant find anything like that");
         }
-    }
+        else if (result.size() == 0) {
+            System.out.println("We cant find anything like that");
+        }
+        else {
+            System.out.println("We found" + result.size() + " results");
+            for(int i = 0; i < result.size(); i++) {
+                System.out.println(result.get(i));
+            }
+        }
     }
 }
 
