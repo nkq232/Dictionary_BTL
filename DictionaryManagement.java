@@ -2,13 +2,9 @@ package Tu_dien;
 import java.util.*;
 import java.io.*;
 public class DictionaryManagement {
-    private  Dictionary dictionary;
+    private final Dictionary dictionary;
 
     //Constructor
-    public DictionaryManagement() {
-
-        dictionary = new Dictionary();
-    }
     public DictionaryManagement(Dictionary d) {
 
         dictionary = d;
@@ -47,18 +43,17 @@ public class DictionaryManagement {
         try {
             File file = new File("dictionaries.txt");
             Scanner in = new Scanner(file);
-           
             while (in.hasNextLine()) {
-            String new_line = in.nextLine();
-            String[] chia_ra = new_line.split("\\t");
-            if(chia_ra.length == 2) {
-                if (!checkWord(chia_ra[0])) {
-                    System.out.println("Error to insert this word");
+                String new_line = in.nextLine();
+                String[] chia_ra = new_line.split("\\t");
+                if(chia_ra.length == 2) {
+                    if (!checkWord(chia_ra[0])) {
+                        System.out.println("Error to insert this word");
+                    }
+                    else {
+                        dictionary.InsertWord(chia_ra[0], chia_ra[1]);
+                    }
                 }
-                else {
-                    dictionary.InsertWord(chia_ra[0], chia_ra[1]);
-                }
-            }
             }
             in.close();
         }
