@@ -86,7 +86,7 @@ public class DictionaryManagement {
     public void deleteWord() {
         System.out.println("Enter the word you want to delete (Enter English pls) : ");
         Scanner in = new Scanner(System.in);
-        dictionaryLookup();
+        
         String En = in.nextLine();
         ArrayList<String> check = dictionary.searchWord(En);
         if (check == null) {
