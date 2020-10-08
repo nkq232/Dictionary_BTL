@@ -2,155 +2,110 @@ package Tu_dien;
 import java.util.*;
 import java.io.*;
 public class DictionaryManagement {
-    private final Dictionary dictionary;
+    public static Dictionary dictionary;
 
-    //Constructor
-    public DictionaryManagement(Dictionary d) {
 
-        dictionary = d;
-    }
-    //Constructor
-    public boolean checkWord(String s) {
-        for(int i = 0; i < s.length(); i++) {
-            if (!Character.isLetter(s.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
-    }
-    public void insertFromCommandline(){
+    public static void  insertFromCommandline(){
         Scanner in = new Scanner(System.in);
-        System.out.println("How many word u want to insert ?");
-        int dem = -2;
-        while (dem <= 0) {
-            dem = Integer.parseInt(in.nextLine());
-            if(dem <= 0) {
-                System.out.println("Sorry input again pls");
-            }
+        System.out.println("Nhap so tu ban muon input: ");
+        int n;
+        n = Integer.parseInt(in.nextLine());
+        dictionary = new Dictionary(n);
+        for(int i = 0; i < n; i++) {
+            System.out.println("Nhap tu thu " + (i + 1) + ":");
+            dictionary.list.get(i).setWord_target(in.nextLine());
+            dictionary.list.get(i).setWord_explained(in.nextLine());
         }
-        for(int i = 0; i < dem; i++) {
-            System.out.println("Enter word: ");
-            String En = in.nextLine();
-            while (!checkWord(En)) {
-                En = in.nextLine();
-            }
-            String Vi = in.nextLine();
-            dictionary.InsertWord(En, Vi);
-        }
-
     }
-    public void insertFromFile() throws Exception{
+    public static void insertFromFile() {
+        dictionary = new Dictionary();
         try {
-            File file = new File("dictionaries.txt");
-            Scanner in = new Scanner(file);
-            while (in.hasNextLine()) {
-                String new_line = in.nextLine();
-                String[] chia_ra = new_line.split("\\t");
-                if(chia_ra.length == 2) {
-                    if (!checkWord(chia_ra[0])) {
-                        System.out.println("Error to insert this word");
-                    }
-                    else {
-                        dictionary.InsertWord(chia_ra[0], chia_ra[1]);
-                    }
-                }
+
+            File f = new File("C:\\Users\\Admin\\IdeaProjects\\BTL\\src\\Tu_dien\\dictionaries.txt");
+            FileReader fr = new FileReader(f);
+
+            BufferedReader br = new BufferedReader(fr);
+
+            String s;
+            for(int i = 0;(s = br.readLine()) != null ; ++i){
+                String[] word = s.split("\\t");
+                dictionary.add();
+                dictionary.list.get(i).setWord_target(word[0]);
+                dictionary.list.get(i).setWord_explained(word[1]);
+
             }
-            in.close();
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
+            fr.close();
+            br.close();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
-
-    public void dictionaryLookup() {
+    public static void dictionaryLookup() {
         Scanner in = new Scanner(System.in);
-        System.out.println("Enter the word u want to find: ");
-        String En = in.nextLine();
-        ArrayList<String> check = dictionary.searchWord(En);
-        if (check == null) {
-            System.out.println("Sorry, I cant find that word");
-        }
-        else {
-            String ki_tu = "";
-            if (check.size() > 1) {
-                ki_tu = "s";
-            }
-            System.out.println("There are " + check.size() + "word" + ki_tu);
-            for(int i = 0; i < check.size(); i++) {
-                System.out.println(check.get(i));
+        String a = in.nextLine();
+        int n = dictionary.list.size();
+        System.out.println("Input the word you want to find: ");
+        boolean check = false;
+        for (int i = 0; i < n; i++) {
+            if (a.equalsIgnoreCase(dictionary.list.get(i).getWord_target())) {
+                System.out.println(dictionary.list.get(i).getWord_explained());
+                check = true;
             }
         }
-
+        if (!check) {
+            System.out.println("Sorry i cant find that word");
+        }
     }
-
-    public void deleteWord() {
-        System.out.println("Enter the word you want to delete (Enter English pls) : ");
+    public static void Edit() {
         Scanner in = new Scanner(System.in);
-        
-        String En = in.nextLine();
-        ArrayList<String> check = dictionary.searchWord(En);
-        if (check == null) {
-            System.out.println("Sorry, I cant find that word");
-        }
-        else {
-            String ki_tu = "";
-            if (check.size() > 1) {
-                ki_tu = "s";
-            }
-            System.out.println("There are " + check.size() + "word" + ki_tu);
-            for(int i = 0; i < check.size(); i++) {
-                System.out.println(check.get(i));
-            }
-            System.out.println("Choose the word u want to delete by entering Vietnamese ver: ");
-            String Vi = in.nextLine();
-            boolean check_delete = dictionary.removeWord(En, Vi);
-            if (check_delete) {
-                System.out.println("Remove done!");
-            }
-            else {
-                System.out.println("Sorry an error happens");
-            }
-        }
-
-    }
-    public void editWord() {
-        Scanner in = new Scanner(System.in);
-        System.out.println("Enter the word need to edit (Enter English pls): ");
+        int n = dictionary.list.size();
+        boolean check = false;
+        System.out.println("What is the target word u want to edit: ");
         String En_before = in.nextLine();
-        ArrayList<String> check = dictionary.searchWord(En_before);
-        if (check == null) {
-            System.out.println("Sorry we cant find that word");
-        }
-        else {
-            System.out.println("We found " + check.size() + "result :");
-            for (int i = 0; i < check.size(); i++) {
-                System.out.println(check.get(i));
+        for (int i = 0; i < n ; i++) {
+            if (En_before.equalsIgnoreCase(dictionary.list.get(i).getWord_target())) {
+                System.out.println("Input the new target word and explained word: ");
+                dictionary.list.get(i).setWord_target(in.nextLine());
+                dictionary.list.get(i).setWord_explained(in.nextLine());
+                check = true;
             }
         }
-        System.out.println("Select a word pls: ");
-        String Vi_before = in.nextLine();
-        System.out.println("Enter new word both English and Vietnamese pls");
-        String En_after = in.nextLine();
-        String Vi_after = in.nextLine();
-        boolean check_edit = dictionary.EditWord(En_before, Vi_before, En_after, Vi_after);
-        if (check_edit) {
+        if (check) {
             System.out.println("Edit success");
         }
         else {
-            System.out.println("Sorry an error happens");
+            System.out.println("Sorry i cant edit this");
         }
     }
-    public void dictionaryExportToFile() throws IOException {
+
+    public static void delete() {
+        Scanner in = new Scanner(System.in);
+        boolean check = false;
+        int n = dictionary.list.size();
+        System.out.println("What is the target word u want to delete: ");
+        String En_before = in.nextLine();
+        for (int i = 0; i < n; i++) {
+            if (En_before.equalsIgnoreCase(dictionary.list.get(i).getWord_target())) {
+                dictionary.list.remove(i);
+                check = true;
+            }
+        }
+        if (check) {
+            System.out.println("Delete success");
+        }
+        else {
+            System.out.println("Sorry i cant delete this word");
+        }
+    }
+    public static void dictionaryExportToFile() throws IOException {
         BufferedWriter writer = new BufferedWriter(new FileWriter("Export.txt"));
-        ArrayList<Word> ToDict = dictionary.getList();
-        for (int i = 0; i < ToDict.size(); i++) {
-            ArrayList<String> refToWordExplain = ToDict.get(i).getWord_explain();
-            for (int j = 0; j < refToWordExplain.size(); j++) {
-                String word_target = ToDict.get(i).getWord_target();
-                String word_explain = ToDict.get(i).getWord_explain().get(j);
+        int n = dictionary.list.size();
+        for (int i = 0; i < n; i++) {
+                String word_target = dictionary.list.get(i).getWord_target();
+                String word_explain = dictionary.list.get(i).getWord_explained();
                 writer.write(word_target + "\t" + word_explain);
                 writer.newLine();
-            }
+
         }
         writer.close();
     }
