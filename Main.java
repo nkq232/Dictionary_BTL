@@ -14,11 +14,11 @@ public class Main {
             System.out.println("2: Show all words in this dictionary.");
             System.out.println("3: Insert from command line");
             System.out.println("4: Search an word by command line.");
-            System.out.println("5: Delete an english word in this dictionary.");
-            System.out.println("6: Find all english world in this dictionary ");
-            System.out.println("7: Export this dictionay to file");
-            System.out.println("8: Exit");
-            System.out.println("Please select fuction [1-8]!");
+            //System.out.println("5: Delete an english word in this dictionary.");
+            System.out.println("5: Find all english world in this dictionary ");
+            System.out.println("6: Export this dictionay to file");
+            System.out.println("7: Exit");
+            System.out.println("Please select fuction [1-7]!");
 
             boolean Ispress = true;
 
@@ -35,14 +35,14 @@ public class Main {
                 case 2 -> dic_com.showAllWords();
                 case 3 -> dic_manage.insertFromCommandline();
                 case 4 -> dic_manage.dictionaryLookup();
-                case 5 -> dic_manage.delete();
-                case 6 -> dic_com.dictionarySearcher();
-                case 7 -> {
+                //case 5 -> dic_manage.delete();
+                case 5 -> dic_com.dictionarySearcher();
+                case 6 -> {
                     dic_manage.dictionaryExportToFile();
                     System.out.println("Export completed");
 
                 }
-                case 8 -> {
+                case 7 -> {
                     Iscontinue = false;
                     System.out.println("Goodbye");
 
