@@ -31,11 +31,12 @@ public class DictionaryCommandline {
         int n = list.size();
         Scanner in = new Scanner(System.in);
         boolean check = false;
-        System.out.println("What is the word you want to search ? 3 letters is MAX pls");
+        System.out.println("What is the word you want to search ? ");
         ArrayList<Word> children = new ArrayList<>();
         String input = in.nextLine();
 
         for (int i = 0; i < n; i++) {
+            if(list.get(i).getWord_target().length() < input.length()) continue;
             String child = list.get(i).getWord_target()
                     .substring(0, input.length());
             if (child.equalsIgnoreCase(input)) {
