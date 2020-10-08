@@ -9,7 +9,7 @@ public class Main {
         boolean Iscontinue = true;
         do {
             System.out.println("Menu:");
-            System.out.println("1: Insert from file.");
+            System.out.println("1: Insert from file, you can choose this function only once.");
             System.out.println("2: Show all words in this dictionary.");
             System.out.println("3: Insert from command line");
             System.out.println("4: Search an word by command line.");
