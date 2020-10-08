@@ -1,12 +1,12 @@
-Apple	Tao
-House	Ngoi nha
-Cat	Meo
+Apple	Táo
+House	Ngôi nhà
+Cat	Mèo
 Flower	Hoa
-Rose	Hoa hong
-Ocean	Dai duong
-Girl	co gai
-Boy	chang trai
-Beat	nhip dieu
-World	the gioi
-Laptop	may tinh xach tay
-Source	nguon
+Rose	Hoa hồng
+Ocean	Đại dương	
+Girl	cô gái
+Boy	chàng trai
+Beat	nhịp điệu
+World	thế giới
+Laptop	máy tính xách tay
+Source	nguồn
