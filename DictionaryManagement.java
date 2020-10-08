@@ -10,11 +10,12 @@ public class DictionaryManagement {
         System.out.println("Nhap so tu ban muon input: ");
         int n;
         n = Integer.parseInt(in.nextLine());
-        dictionary = new Dictionary(n);
+       int size = dictionary.list.size();   
         for(int i = 0; i < n; i++) {
+            dictionary.list.add(new Word());
             System.out.println("Nhap tu thu " + (i + 1) + ":");
-            dictionary.list.get(i).setWord_target(in.nextLine());
-            dictionary.list.get(i).setWord_explained(in.nextLine());
+            dictionary.list.get(i+size).setWord_target(in.nextLine());
+            dictionary.list.get(i+size).setWord_explained(in.nextLine());
         }
     }
     public static void insertFromFile() {
