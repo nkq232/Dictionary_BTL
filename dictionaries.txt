@@ -1,3 +1,12 @@
-House Ngôi nhà
-Cat Con mèo
-Flower  Hoa
+Apple	Tao
+House	Ngoi nha
+Cat	Meo
+Flower	Hoa
+Rose	Hoa hong
+Ocean	Dai duong
+Girl	co gai
+Boy	chang trai
+Beat	nhip dieu
+World	the gioi
+Laptop	may tinh xach tay
+Source	nguon
