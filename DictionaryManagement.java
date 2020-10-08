@@ -22,7 +22,7 @@ public class DictionaryManagement {
         dictionary = new Dictionary();
         try {
 
-            File f = new File("C:\\Users\\Admin\\IdeaProjects\\BTL\\src\\Tu_dien\\dictionaries.txt");
+            File f = new File("dictionaries.txt");
             FileReader fr = new FileReader(f);
 
             BufferedReader br = new BufferedReader(fr);
