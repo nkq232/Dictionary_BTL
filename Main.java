@@ -26,7 +26,7 @@ public class Main {
             switch (select) {
                 case 1 -> {
                     if (Isused) {
-                        System.out.println("Sorry u have insert already");
+                        System.out.println("Sorry u have inserted already");
                         break;
                     }
                     dic_manage.insertFromFile();
