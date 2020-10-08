@@ -1,14 +1,17 @@
 package Tu_dien;
 import java.util.*;
 import java.util.ArrayList;
+
+import static Tu_dien.Dictionary.*;
+
 public class DictionaryCommandline {
     void showAllWords() {
-        int n = DictionaryManagement.dictionary.list.size();
+        int n = list.size();
         System.out.printf("%-8s|%-40s|%s%n%n", "No", "English", "Vietnamese");
         for(int i = 0; i < n; i++) {
             System.out.printf("%-8s|%-40s|%s%n%n", i+1,
-                    DictionaryManagement.dictionary.list.get(i).getWord_target(),
-                    DictionaryManagement.dictionary.list.get(i).getWord_explained());
+                    list.get(i).getWord_target(),
+                    list.get(i).getWord_explained());
         }
     }
 
@@ -25,25 +28,26 @@ public class DictionaryCommandline {
 
     }
     public void dictionarySearcher() {
-        int n = DictionaryManagement.dictionary.list.size();
+        int n = list.size();
         Scanner in = new Scanner(System.in);
         boolean check = false;
-        System.out.println("What is the word you want to search ?");
+        System.out.println("What is the word you want to search ? 3 letters is MAX pls");
         ArrayList<Word> children = new ArrayList<>();
         String input = in.nextLine();
-        for (int i = n; i < n; i++) {
-            String child = DictionaryManagement.dictionary.list.get(i).getWord_target()
+
+        for (int i = 0; i < n; i++) {
+            String child = list.get(i).getWord_target()
                     .substring(0, input.length());
             if (child.equalsIgnoreCase(input)) {
                 check = true;
-                Word new_child = new Word(input, DictionaryManagement.dictionary.list
+                Word new_child = new Word(list.get(i).getWord_target(), list
                         .get(i).getWord_explained());
 
                 children.add(new_child);
             }
         }
         if (check) {
-            System.out.println("We found " + children.size() + "word(s) :");
+            System.out.println("We found " + children.size() + " word(s) :");
             System.out.printf("%-8s|%-40s|%s%n%n", "No", "English", "Vietnamese");
             for (int i = 0; i < children.size(); i++) {
                 System.out.printf("%-8s|%-40s|%s%n%n", i+1,
@@ -57,3 +61,4 @@ public class DictionaryCommandline {
     }
 
 }
+
