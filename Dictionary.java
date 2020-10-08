@@ -1,7 +1,7 @@
 package Tu_dien;
 import java.util.*;
 public class Dictionary {
-    public ArrayList<Word> list = new ArrayList<>();
+    public static ArrayList<Word> list = new ArrayList<>();
 
     // Constructor
     /** Tao dictionary voi n phan tu trong arraylist.*/
